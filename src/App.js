@@ -7,7 +7,6 @@ function App() {
   // DataStorage();
   return (
     <div className="App">
-      <AddToLocalStorage/>
       <header className="">
         <Navbar/>
         <h1>Hello and welcome!</h1> 
@@ -35,6 +34,7 @@ function AddToLocalStorage() {
     console.log("JSON:", myJSON)
     localStorage.setItem(el.EAN, myJSON);
   }
+  window.location.reload(false);
   return null;
 }
 
@@ -44,7 +44,12 @@ function Navbar() {
   // navbar
   return(
     <nav className="navbar fixed-top navbar-dark bg-dark">
-      <a className="navbar-brand" href="#top">Online Shop</a>
+      <a className="navbar-brand" href="#top">Online Shop</a>      
+      <ul className="navbar-nav">
+        <li className="nav-item active">
+          <a className="nav-link" href="#" onClick={AddToLocalStorage}>Refresh List</a>
+        </li>
+      </ul>    
     </nav>
   );
 }
@@ -81,7 +86,7 @@ function ProductList() {
         products.push(parsed);
     }
     catch (ex) {
-      
+      // if something is wrong, the object is skipped
     }
   }
   const list = products.map( (product, index) => 
@@ -90,7 +95,23 @@ function ProductList() {
   return list;
 } 
 
+function UpdateActive(ean) {
+  let el = localStorage.getItem(ean);
+  try {
+    let parsed = JSON.parse(el);
 
+    if(parsed.Active == "true")
+      parsed.Active = "false";
+    else parsed.Active = "true";
+
+    el = JSON.stringify(parsed);
+    localStorage.setItem(ean, el);
+  }
+  catch(ex) {
+    alert("Product status was not updated");
+  }
+  return null;
+}
 
 
 class Product extends React.Component{
@@ -113,6 +134,8 @@ class Product extends React.Component{
     this.setState(state => ({
       isActive: !state.isActive
     }));
+    UpdateActive(this.EAN);
+    
   }
   DisplayDot() {
     if(this.state.isActive) {
