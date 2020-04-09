@@ -1,33 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './bootstrap/css/bootstrap.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-
-
-function App1() {
   return (
     <div className="App">
       
@@ -44,8 +20,8 @@ function App1() {
 function Navbar() {
   // navbar
   return(
-    <nav className="navbar fixed-top navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">Online Shop</a>
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Online Shop</a>
     </nav>
   );
 }
@@ -107,3 +83,4 @@ class Product extends React.Component{
     );
   }
 }
+export default App;

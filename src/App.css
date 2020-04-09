@@ -1,7 +1,28 @@
+body {
+  margin-top: 70px !important;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red {
+  background-color: #ff0000;
+}
+.dot-green {
+  background-color: #00ff00;
+}
+
 .App {
   text-align: center;
 }
-
+.product-table {
+  background-color: white;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
