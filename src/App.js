@@ -3,12 +3,11 @@ import React from 'react';
 import './App.css';
 import './bootstrap/css/bootstrap.css';
 
-AddToLocalStorage();
-
 function App() {
   // DataStorage();
   return (
     <div className="App">
+      <AddToLocalStorage/>
       <header className="">
         <Navbar/>
         <h1>Hello and welcome!</h1> 
@@ -19,43 +18,24 @@ function App() {
     </div>
   );
 }
-// function DataStorage() {
-//   // Storing data:
-//   var myObj = { Name: "Fictional Phone 3000", EAN: "123abc", Type: "Phone", Weight: "100", Color: "red", Active: "false"};
-//   var myJSON = JSON.stringify(myObj);
-//   localStorage.setItem("testJSON", myJSON);
-
-//   // Retrieving data:
-//   var text = localStorage.getItem("testJSON");
-//   var textParsed = JSON.parse(text);
-//   return textParsed;
-// }
-// function DataDisplay() {
-//   var object = DataStorage();
-
-//   return (
-//   <div>
-//     {object.Name + " is " + object.Color + " color. "}
-//   </div>);
-
-// }
-
 
 function AddToLocalStorage() {
+  localStorage.clear();
   var arr = [
     { Name: "Fictional Phone 3000", EAN: "5165157459314", Type: "Phone", Weight: "100", Color: "Red", Active: "false" },
     { Name: "Fictional Phone 3001", EAN: "8214110681686", Type: "Phone", Weight: "127", Color: "Black", Active: "false" },
     { Name: "Fictional Phone 3001", EAN: "5787798767753", Type: "Phone", Weight: "127", Color: "Silver", Active: "true"},
     { Name: "Fictional Phone 3002", EAN: "3913406269384", Type: "Phone", Weight: "107", Color: "Gold", Active: "false"},
-    { Name: "Fictional Phone 3002", EAN: "3913406269384", Type: "Phone", Weight: "107", Color: "Gold", Active: "false"},
     { Name: "Fictional Phone 3003", EAN: "6976202303917", Type: "Phone", Weight: "106", Color: "Rose Gold", Active: "false"},
     { Name: "Tank toy", EAN: "7483869738297", Type: "Toy", Weight: "500", Color: "khaki", Active: "true"}
   ];
-
-  for( var el in arr) {
-    var myJSON = JSON.stringify(el);
-    localStorage.setItem(el.EAN, el);
+  for( var el of arr) {
+    console.log(el);
+    let myJSON = JSON.stringify(el);
+    console.log("JSON:", myJSON)
+    localStorage.setItem(el.EAN, myJSON);
   }
+  return null;
 }
 
 
@@ -83,15 +63,31 @@ function ProductTable() {
       </thead>
       <tbody>
         
+        <ProductList/>
+        
       </tbody>
     </table>
   );
 }
 
-function ParseData() {
-  for(var el in localStorage) {
-    
+function ProductList() {
+
+  let products = [];
+  for(let el in localStorage) {
+    try {
+      let parsed = JSON.parse(localStorage.getItem(el));
+      // Do not add empty objects to the array
+      if(parsed != null)
+        products.push(parsed);
+    }
+    catch (ex) {
+      
+    }
   }
+  const list = products.map( (product, index) => 
+    <Product key={index} el={product} />
+  );
+  return list;
 } 
 
 
@@ -100,16 +96,15 @@ function ParseData() {
 class Product extends React.Component{
   constructor(props) {
     super(props);
-    if(props.active === "true"){
+    if(props.el.Active == "true"){
       this.state = {isActive: true};
     }
     else this.state = {isActive: false};
-    
-    this.Name = props.name;
-    this.EAN = props.EAN;
-    this.Type = props.type;
-    this.Weight = props.weight;
-    this.Color = props.color;
+    this.Name = props.el.Name;
+    this.EAN = props.el.EAN;
+    this.Type = props.el.Type;
+    this.Weight = props.el.Weight;
+    this.Color = props.el.Color;
     
     // This binding is necessary to make `this` work in the callback
     this.ChangeStatus = this.ChangeStatus.bind(this);
