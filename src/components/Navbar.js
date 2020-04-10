@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Navbar() {
     // navbar
     return(
         <nav className="navbar fixed-top navbar-dark bg-dark">
-        <a className="navbar-brand" href="#top">Online Shop</a>      
+        <Link className="navbar-brand"  to={`/`}>Online Shop</Link>      
         <ul className="navbar-nav">
             <li className="nav-item active">
             <a className="nav-link" href="#reset" onClick={AddToLocalStorage}>Reset list</a>

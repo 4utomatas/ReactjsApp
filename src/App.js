@@ -1,23 +1,42 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
+
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
+import Details from "./components/Details";
 // Style
 import './bootstrap/css/bootstrap.css';
 
 function App() {
   // DataStorage();
   return (
-    <div className="App">
-      <header className="">
-        <Navbar/>
+    <Router>
+      <div className="App">
+        <header className="">
+          <Navbar/>
+          
+        </header>
         <h1>Product list:</h1> 
-      </header>
-      <div className="container">
-        <ProductTable/>
+        <Switch>
+          <Route path="/Details/:id">
+            <Details />
+          </Route>
+          <Route path="/">
+            <div className="container">
+             <ProductTable/>
+            </div>
+          </Route>
+        </Switch>
+        
       </div>
-    </div>
+    </Router>
   );
 }
 
