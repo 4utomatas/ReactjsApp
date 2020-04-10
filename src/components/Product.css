@@ -1,0 +1,4 @@
+.marked {
+    background-color: var(--danger) !important;
+    /* color: var(--dark) !important; */
+}

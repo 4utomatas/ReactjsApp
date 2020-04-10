@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from './Product';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 
 export default function Details() {
     let { id } = useParams();
@@ -14,13 +14,14 @@ export default function Details() {
     }
     if(obj !== null && obj.EAN !== null) {
         return (
-            <div className="container">
-                <ul className="text-left">
+            <div className="container text-left">
+                <ul >
                     <li>{obj.Name}</li>
                     <li>{obj.Type}</li>
                     <li>{obj.Color}</li>
                     <li>{obj.EAN}</li>
                 </ul>
+                <Link className="btn btn-success" to={`/`}> Go back </Link>
             </div>
         );      
     }

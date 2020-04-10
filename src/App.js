@@ -23,7 +23,6 @@ function App() {
       <div className="App">
         <header className="">
           <Navbar/>
-          
         </header>
         
         <Switch>
@@ -63,6 +62,8 @@ function ProductTable() {
           <td> Weight </td>
           <td> Color </td>
           <td> Active </td>
+          <td> Quantity</td>
+          <td> Price </td>
           <td> Actions </td>
         </tr>
       </thead>
