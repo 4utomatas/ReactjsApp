@@ -11,6 +11,8 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
 import Details from "./components/Details";
+import Edit from "./components/Edit";
+import Delete from "./components/Delete";
 // Style
 import './bootstrap/css/bootstrap.css';
 
@@ -23,14 +25,24 @@ function App() {
           <Navbar/>
           
         </header>
-        <h1>Product list:</h1> 
+        
         <Switch>
+        <Route path="/Delete/:id">
+            <h1>Delete a product</h1>
+            <Delete />
+          </Route>
           <Route path="/Details/:id">
+            <h1>View details of a product</h1>
             <Details />
+          </Route>
+          <Route path="/Edit/:id">
+            <h1>Edit product</h1>
+            <Edit />
           </Route>
           <Route path="/">
             <div className="container">
-             <ProductTable/>
+              <h1>Product list:</h1> 
+              <ProductTable/>
             </div>
           </Route>
         </Switch>

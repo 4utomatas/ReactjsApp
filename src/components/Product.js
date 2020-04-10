@@ -77,8 +77,8 @@ export default class Product extends React.Component{
                 <td className="align-middle"> {this.DisplayDot()} </td>
                 <td className="align-middle">  
                     <Link className="btn btn-info mr-1" to={`/Details/${this.EAN}`}> View </Link>
-                    <button className="btn btn-primary mr-1" onClick={this.Edit}> Edit </button>
-                    <button className="btn btn-danger" onClick={this.Delete}> Delete </button>
+                    <Link className="btn btn-primary mr-1" to={`/Edit/${this.EAN}`}> Edit </Link>
+                    <Link className="btn btn-danger" to={`/Delete/${this.EAN}`}> Delete </Link>
                 </td>
             </tr>
         );

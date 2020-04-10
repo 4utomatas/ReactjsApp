@@ -10,12 +10,12 @@ export default function Details() {
         obj = JSON.parse(item); 
     }
     catch(ex) {
-        return(<div>"The product is not found"</div>);
+        return(<div>"The product was not found"</div>);
     }
     if(obj !== null && obj.EAN !== null) {
         return (
-            <div>
-                <ul>
+            <div className="container">
+                <ul className="text-left">
                     <li>{obj.Name}</li>
                     <li>{obj.Type}</li>
                     <li>{obj.Color}</li>
