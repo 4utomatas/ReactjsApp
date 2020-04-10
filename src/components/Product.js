@@ -60,20 +60,22 @@ export default class Product extends React.Component{
             
         else return null;  
     }
-
+    TableCell(element) {   
+        return <td className={`align-middle ${element.class}`}> {element.value} </td>;
+    }
     render() {
         return (
             <tr>
-                <td className="align-middle"> {this.Name} </td>
-                <td className="align-middle"> {this.EAN} </td>
-                <td className="align-middle"> {this.Type} </td>
-                <td className="align-middle"> {this.DisplayWeight()} </td>
-                <td className="align-middle"> {this.Color} </td>
-                <td className="align-middle"> {this.DisplayDot()} </td>
-                <td className={`align-middle ${this.isMarked()}`}> {this.Quantity} </td>
-                <td className="align-middle"> {this.DisplayPrice()} </td>
+                <this.TableCell value={this.Name} />
+                <this.TableCell value={this.EAN} />
+                <this.TableCell value={this.Type} />
+                <this.TableCell value={this.DisplayWeight()} />
+                <this.TableCell value={this.Color} />
+                <this.TableCell class={this.isMarked()} value={this.Quantity} />
+                <this.TableCell value={this.DisplayPrice()} />
+                <this.TableCell value={this.DisplayDot()} />
                 <td className="align-middle">  
-                    <Link className="btn btn-info mr-1" to={`/Details/${this.EAN}`}> View </Link>
+                    <Link className="btn btn-info mr-1" to={`/${this.EAN}`}> View </Link>
                     <Link className="btn btn-primary mr-1" to={`/Edit/${this.EAN}`}> Edit </Link>
                     <Link className="btn btn-danger" to={`/Delete/${this.EAN}`}> Delete </Link>
                 </td>

@@ -8,7 +8,7 @@ function Navbar() {
         <Link className="navbar-brand"  to={`/`}> Your Fictional Store </Link>      
         <ul className="navbar-nav">
             <li className="nav-item active">
-            <a className="nav-link" href="#reset" onClick={AddToLocalStorage}>Reset list</a>
+            <a className="nav-link" href="#reset" onClick={AddToLocalStorage}>Populate DB</a>
             </li>
         </ul>    
         </nav>

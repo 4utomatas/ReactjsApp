@@ -25,5 +25,5 @@ export default function Details() {
             </div>
         );      
     }
-    else return <h2> The product is not found </h2>;      
+    else return <h2> The product was not found </h2>;      
 }

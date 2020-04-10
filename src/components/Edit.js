@@ -10,7 +10,7 @@ export default function Edit() {
         obj = JSON.parse(item); 
     }
     catch(ex) {
-        return(<div>"The product is not found"</div>);
+        return(<div>The product was not found</div>);
     }
 
     if(obj !== null && obj.EAN !== null) {
