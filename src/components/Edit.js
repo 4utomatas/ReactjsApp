@@ -35,10 +35,42 @@ class EditForm extends React.Component {
       };
       // Save the EAN code if it is changed
       this.EAN = props.obj.EAN;
+      this.Quantity = props.obj.Quantity;
+      this.Price = props.obj.Price;
       this.handleInputChange = this.handleInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
+    CaptureChange(props) {
+        let newq = props.Quantity;
+        let newp = props.Price;
+        let type = 'q';
+        if(newq !== this.Quantity) {
+            let obj = new Object();
+
+            try {
+                let item = localStorage.getItem(`${type}${this.EAN}`);
+                obj = JSON.parse(item); 
+            }
+            catch(ex) {
+                alert(`Error: The product's history was not found, ID: ${this.EAN}`);
+            }
+
+            let currentDate = new Date(Date.now()).toISOString();
+            let splitDate = currentDate.split('T');    
+           
+            if(obj !== null && obj.EAN !== null) {
+                obj.History.push({date: splitDate[0], value: newq });
+                let jsonified = JSON.stringify(obj);
+                console.log(obj);
+                localStorage.setItem(`${type}${this.EAN}`, jsonified);
+                // return <RenderLineChart History={obj.History} />;
+            }
+            else alert("obj is null or ean is null");
+            return null;
+        }
+    }
+
     handleInputChange(event) {
         const target = event.target;
         const value = target.value;
@@ -50,7 +82,7 @@ class EditForm extends React.Component {
     }
     
     handleSubmit(event) {
-        
+        event.preventDefault();
         let updated = {
             Name: this.state.Name,
             Type: this.state.Type,
@@ -60,13 +92,12 @@ class EditForm extends React.Component {
             Quantity: this.state.Quantity,
             Price: this.state.Price
         };
-        
         let jsonified = JSON.stringify(updated);
+        localStorage.setItem(this.state.EAN, jsonified);
 
-        localStorage.setItem(this.EAN, jsonified);
+        this.CaptureChange({Quantity: updated.Quantity, Price: updated.Price});
+        alert('Your changes have been changed');
         
-        alert('You changes have been changed');
-        event.preventDefault();
     }
     
     render() {
@@ -81,7 +112,9 @@ class EditForm extends React.Component {
                         name="EAN"
                         type="text"
                         value={this.state.EAN}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleInputChange} 
+                        disabled
+                        />
                 </div>
                 <div className="form-group">
                     <label for="name">Name:</label>

@@ -40,11 +40,7 @@ export default function Details() {
                         <History type="p"/> 
                     </Panel>
                 </div>
-                
-            </Tabs>
-
-
-            
+            </Tabs>    
         </div>
     );              
 }

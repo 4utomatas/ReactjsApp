@@ -1,6 +1,7 @@
 // Populate local storage with data
 export default function PopulateDB() {
     localStorage.clear();
+    
     let arr = [
         // Products
         { Name: "Fictional Phone 3000", EAN: "5165157459314", Type: "Phone", Weight: "100", Color: "Red", Active: "false", Quantity: 10, Price: 500.77 },

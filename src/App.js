@@ -42,7 +42,6 @@ function App() {
             <ProductTable/>
           </Route>
         </Switch>
-        
       </main> 
       <Footer />
     </Router>
