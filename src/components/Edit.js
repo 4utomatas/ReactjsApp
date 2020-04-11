@@ -35,39 +35,19 @@ class EditForm extends React.Component {
       };
       // Save the EAN code if it is changed
       this.EAN = props.obj.EAN;
-      this.Quantity = props.obj.Quantity;
       this.Price = props.obj.Price;
+      this.Quantity = props.obj.Quantity;
       this.handleInputChange = this.handleInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
     CaptureChange(props) {
-        let newq = props.Quantity;
-        let newp = props.Price;
-        let type = 'q';
-        if(newq !== this.Quantity) {
-            let obj = new Object();
-
-            try {
-                let item = localStorage.getItem(`${type}${this.EAN}`);
-                obj = JSON.parse(item); 
-            }
-            catch(ex) {
-                alert(`Error: The product's history was not found, ID: ${this.EAN}`);
-            }
-
-            let currentDate = new Date(Date.now()).toISOString();
-            let splitDate = currentDate.split('T');    
-           
-            if(obj !== null && obj.EAN !== null) {
-                obj.History.push({date: splitDate[0], value: newq });
-                let jsonified = JSON.stringify(obj);
-                console.log(obj);
-                localStorage.setItem(`${type}${this.EAN}`, jsonified);
-                // return <RenderLineChart History={obj.History} />;
-            }
-            else alert("obj is null or ean is null");
-            return null;
+        // if new quantity from the form is different
+        if(props.Quantity !== this.Quantity) {
+            SaveHistory({type: 'q', value: props.Quantity, EAN: this.EAN});
+        }
+        if(props.Price !== this.Price) {
+            SaveHistory({type: 'p', value: props.Price, EAN: this.EAN});
         }
     }
 
@@ -190,4 +170,35 @@ class EditForm extends React.Component {
         
       );
     }
+}
+function SaveHistory(props) {
+    let obj = new Object();
+    // q or p - quantity or price
+    let type = props.type;
+    // identify in local storage
+    let id = props.EAN;
+    let newValue = props.value;
+
+    try {
+        let item = localStorage.getItem(`${type}${id}`);
+        obj = JSON.parse(item); 
+    }
+    catch(ex) {
+        alert(`Error: The product's history was not found, ID: ${id}`);
+    }
+
+    let currentDate = new Date(Date.now()).toISOString();
+    let splitDate = currentDate.split('T');    
+    
+    if(obj !== null && obj.EAN !== null) {
+        obj.History.push({date: splitDate[0], value: newValue });
+    }
+    else {
+        // Create a new history for the product
+        obj = {EAN: id, History: [{date: splitDate[0], value: newValue }]};
+    }
+    console.log(obj);
+    let jsonified = JSON.stringify(obj);
+    localStorage.setItem(`${type}${id}`, jsonified);
+    return null;
 }
