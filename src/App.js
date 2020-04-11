@@ -9,7 +9,9 @@ import {
 import './App.css';
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProductTable from "./components/ProductTable";
+
 import Details from "./components/Details";
 import Edit from "./components/Edit";
 import Delete from "./components/Delete";
@@ -20,11 +22,8 @@ function App() {
   // DataStorage();
   return (
     <Router>
-      <div className="App">
-        <header className="">
-          <Navbar/>
-        </header>
-        
+      <Navbar/> 
+      <main className="container">    
         <Switch>
           <Route path="/Delete/:id">
             <Delete />
@@ -39,14 +38,13 @@ function App() {
             <Details />
           </Route>
           <Route path="/">
-            <div className="container">
-              <h1>Product list:</h1> 
-              <ProductTable/>
-            </div>
+            <h1>Product list:</h1> 
+            <ProductTable/>
           </Route>
         </Switch>
         
-      </div>
+      </main> 
+      <Footer />
     </Router>
   );
 }

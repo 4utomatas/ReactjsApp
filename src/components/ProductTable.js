@@ -30,8 +30,8 @@ function ProductList() {
   for(let el in localStorage) {
     try {
       let parsed = JSON.parse(localStorage.getItem(el));
-      // Do not add empty objects to the array
-      if(parsed != null)
+      // Do not add empty objects to the array or those which are history objects
+      if(parsed !== null && !('History' in parsed))
         products.push(parsed);
     }
     catch (ex) {

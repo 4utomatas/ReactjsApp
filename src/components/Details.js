@@ -1,29 +1,51 @@
 import React from 'react';
 import Product from './Product';
-import {useParams, Link} from 'react-router-dom';
+import {useParams, Link, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
+import ProductDetails from './Details/ProductDetails';
+import History from './Details/History';
+import { Tabs, Tab, Panel } from '@bumaga/tabs';
 
 export default function Details() {
-    let { id } = useParams();
-    let obj = new Object();
-    try {
-        let item = localStorage.getItem(id);
-        obj = JSON.parse(item); 
-    }
-    catch(ex) {
-        return(<div>"The product was not found"</div>);
-    }
-    if(obj !== null && obj.EAN !== null) {
-        return (
-            <div className="container text-left">
-                <ul >
-                    <li>{obj.Name}</li>
-                    <li>{obj.Type}</li>
-                    <li>{obj.Color}</li>
-                    <li>{obj.EAN}</li>
-                </ul>
-                <Link className="btn btn-success" to={`/`}> Go back </Link>
-            </div>
-        );      
-    }
-    else return <h2> The product was not found </h2>;      
+    return (
+        <div className="container text-left">
+            <Tabs>
+                <div>
+                    <Tab>
+                        <button className="btn btn-info mr-1">
+                            Product Details
+                        </button>
+                    </Tab>
+                    <Tab>
+                        <button className="btn btn-info mr-1">
+                            Quantity history
+                        </button>
+                    </Tab>
+                    <Tab>
+                        <button className="btn btn-info mr-1">
+                            Price history
+                        </button>
+                    </Tab>
+                    <Link className="btn btn-success" to={`/`}> Go back </Link>
+                </div>
+                <div className="container m-2">
+                    <Panel>
+                        <ProductDetails />
+                    </Panel>
+                    <Panel>
+                        <p>Quantity history</p>
+                        <History type="q"/>
+                    </Panel>
+                    <Panel>
+                        <p>Price history</p> 
+                        <History type="p"/> 
+                    </Panel>
+                </div>
+                
+            </Tabs>
+
+
+            
+        </div>
+    );              
 }
+

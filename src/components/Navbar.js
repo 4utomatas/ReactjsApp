@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import PopulateDB from "./PopulateDB";
+
 function Navbar() {
     // navbar
     return(
@@ -8,31 +10,11 @@ function Navbar() {
         <Link className="navbar-brand"  to={`/`}> Your Fictional Store </Link>      
         <ul className="navbar-nav">
             <li className="nav-item active">
-            <a className="nav-link" href="#reset" onClick={AddToLocalStorage}>Populate DB</a>
+                <a className="nav-link" href="#reset" onClick={PopulateDB}>Populate DB</a>
             </li>
         </ul>    
         </nav>
     );
 }
-// Populate local storage with data
-function AddToLocalStorage() {
-    localStorage.clear();
-    var arr = [
-        { Name: "Fictional Phone 3000", EAN: "5165157459314", Type: "Phone", Weight: "100", Color: "Red", Active: "false", Quantity: 10, Price: 500.77 },
-        { Name: "Fictional Phone 3001", EAN: "8214110681686", Type: "Phone", Weight: "127", Color: "Black", Active: "false", Quantity: 10, Price: 500 },
-        { Name: "Fictional Phone 3001", EAN: "5787798767753", Type: "Phone", Weight: "127", Color: "Silver", Active: "true", Quantity: 10, Price: 500},
-        { Name: "Fictional Phone 3002", EAN: "3913406269384", Type: "Phone", Weight: "107", Color: "Gold", Active: "false", Quantity: 10, Price: 500},
-        { Name: "Fictional Phone 3003", EAN: "6976202303917", Type: "Phone", Weight: "106", Color: "Rose Gold", Active: "false", Quantity: 10, Price: 500},
-        { Name: "Tank toy", EAN: "7483869738297", Type: "Toy", Weight: "500", Color: "khaki", Active: "true", Quantity: 10, Price: 500}
-    ];
-    for( var el of arr) {
-        console.log(el);
-        let myJSON = JSON.stringify(el);
-        console.log("JSON:", myJSON)
-        localStorage.setItem(el.EAN, myJSON);
-    }
-    // Reload the page to see the changes
-    window.location.reload(false);
-    return null;
-}
+
 export default Navbar;
