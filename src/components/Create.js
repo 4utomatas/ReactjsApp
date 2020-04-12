@@ -141,7 +141,7 @@ class CreateForm extends React.Component {
                         onChange={this.handleInputChange} />
                 </div>
 
-                <input className="btn btn-dark mr-1" type="submit" value="Save changes" />
+                <input className="btn btn-dark mr-1" type="submit" value="Create" />
                 <Link className="btn btn-success" to={`/`}> Go back </Link>
             </form>
         </div>

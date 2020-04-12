@@ -21,7 +21,6 @@ import Edit from "./components/Edit";
 import './bootstrap/css/bootstrap.css';
 
 function App() {
-  // DataStorage();
   return (
     <Router>
       <Navbar/> 
@@ -48,7 +47,6 @@ function App() {
               <div className="">
                 <h1>Product list:</h1>
               </div>
-               
               <div className="">
                 <Link className="btn btn-info mr-1 btn-new" to={`/products/Create/`}> New product </Link>
               </div>
