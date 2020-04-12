@@ -4,7 +4,11 @@ export default function Footer() {
     return (
         <footer className="footer bg-dark text-white">
             <div className="container">
-                <span >Your store name here.</span>
+                <div className="custom-flex-sides">
+                    <span>Your store name here.</span>
+                    <a className="text-white" href="https://fontawesome.com/license">Font Awesome: sort icon</a>
+                </div>
+                
             </div>
         </footer>
     );

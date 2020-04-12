@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
@@ -26,33 +27,36 @@ function App() {
       <Navbar/> 
       <main className="container">    
         <Switch>
-          <Route path="/Delete/:id">
+          <Route path="/products/Delete/:id">
             <Delete />
           </Route>
-          <Route path="/Edit/:id">
+          <Route path="/products/Edit/:id">
             <h1>Edit product</h1>
             <Edit />
           </Route>
-          <Route path="/Create/">
+          <Route path="/products/Create/">
             <h1>Create new product:</h1> 
             <Create/>
           </Route>
           {/* Details */}
-          <Route path="/:id">
+          <Route path="/products/:id">
             <h1>View details of a product</h1>
             <Details />
           </Route>
-          <Route path="/">
+          <Route path="/products/">
             <div className="d-flex flex-row justify-content-between align-items-center">
               <div className="">
                 <h1>Product list:</h1>
               </div>
                
               <div className="">
-                <Link className="btn btn-info mr-1 btn-new" to={`/Create/`}> New product </Link>
+                <Link className="btn btn-info mr-1 btn-new" to={`/products/Create/`}> New product </Link>
               </div>
             </div>
             <ProductTable/>
+          </Route>
+          <Route path="/">
+            <Redirect to="/products/"></Redirect>
           </Route>
         </Switch>
       </main> 
@@ -60,4 +64,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

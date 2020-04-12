@@ -164,7 +164,7 @@ class EditForm extends React.Component {
                 </div>
 
                 <input className="btn btn-dark mr-1" type="submit" value="Save changes" />
-                <Link className="btn btn-success" to={`/`}> Go back </Link>
+                <Link className="btn btn-success" to={`/products/`}> Go back </Link>
             </form>
         </div>
         

@@ -2,21 +2,59 @@ import React from 'react';
 import Product from './Product';
 import $ from 'jquery';
 import 'tablesorter';
+import './ProductTable.css';
+
+
 
 export default function ProductTable() {
+  // Enable table sorter
+  $(function() {
+    $("#ProductTable").tablesorter({
+      sortList: [[0,0]]
+    });
+  });
+
   return (
     <table className="table table-bordered table-striped product-table" id="ProductTable">
       <thead>
         <tr>
-          <td> Name </td>
-          <td> EAN </td>
-          <td> Type </td>
-          <td> Weight </td>
-          <td> Color </td>
-          <td> Quantity</td>
-          <td> Price </td>
-          <td> Active </td>
-          <td> Actions </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Name </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> EAN </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Type </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Weight </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Color </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Quantity </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td>
+            <div className="custom-flex-sides"> 
+              <div> Price </div> <img src='/sort-solid.svg' className='sort-img'/>
+            </div>
+          </td>
+          <td className="sorter-false"> Active </td>
+          <td className="sorter-false">  Actions </td>
         </tr>
       </thead>
       <tbody>        
@@ -25,12 +63,6 @@ export default function ProductTable() {
     </table>
   );
 }
-
-$(function() {
-  $("#ProductTable").tablesorter({
-  });
-});
-
 function ProductList() {
   let products = [];
   for(let el in localStorage) {

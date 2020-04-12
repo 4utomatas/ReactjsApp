@@ -24,7 +24,7 @@ export default function Details() {
                             Price history
                         </button>
                     </Tab>
-                    <Link className="btn btn-success" to={`/`}> Go back </Link>
+                    <Link className="btn btn-success" to={`/products/`}> Go back </Link>
                 </div>
                 <div className="mt-2">
                     <Panel>

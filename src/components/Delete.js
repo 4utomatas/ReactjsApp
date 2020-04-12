@@ -9,7 +9,7 @@ export default function Delete() {
         return (
             <div>
                 <p>The product was deleted.</p>
-                <Link className="btn btn-success" to={`/`}> Back </Link>
+                <Link className="btn btn-success" to={`/products/`}> Go back </Link>
             </div>
         );  
     }
@@ -17,7 +17,7 @@ export default function Delete() {
         return(
         <div>
             <p>The product was not found</p>
-            <Link className="btn btn-success" to={`/`}> Go back </Link>
+            <Link className="btn btn-success" to={`/products/`}> Go back </Link>
         </div>
         
         );

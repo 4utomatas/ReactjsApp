@@ -2,35 +2,28 @@ html, body {
   height: 100%;
 }
 
-.dot {
-  height: 15px;
-  width: 15px;
-  background-color: #000;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-red {
-  background-color: #ff0000;
-}
-
-.dot-green {
-  background-color: #00ff00;
-}
-
 #root {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
 main {
   /* It is a shorthand for flex-grow, flex-shrink, and flex-basis */
   margin-top: 70px;
   margin-bottom: 20px;
   flex: 1 0 auto;
 }
+
 .footer {
   flex-shrink: 0;
   height: 70px;
   line-height: 70px;
 }
+
+.custom-flex-sides {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+} 

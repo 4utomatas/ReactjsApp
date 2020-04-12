@@ -33,8 +33,8 @@ export default class Product extends React.Component{
 
     DisplayDot() {
         if(this.state.isActive) 
-            return <a href="#dot" onClick={this.ChangeStatus}><span className={"dot dot-green"}></span></a>;
-        else return <a href="#dot" onClick={this.ChangeStatus}><span className={"dot dot-red"}></span></a>;
+            return <span className={"dot dot-green"} onClick={this.ChangeStatus}></span>;
+        else return <span className={"dot dot-red"} onClick={this.ChangeStatus}></span>;
     }
 
     DisplayPrice() {
@@ -70,11 +70,11 @@ export default class Product extends React.Component{
                 <this.TableCell value={this.Color} />
                 <this.TableCell class={this.isMarked()} value={this.Quantity} />
                 <this.TableCell value={this.DisplayPrice()} />
-                <this.TableCell value={this.DisplayDot()} />
+                <this.TableCell class="text-center" value={this.DisplayDot()} />
                 <td className="align-middle">  
-                    <Link className="btn btn-info mr-1" to={`/${this.EAN}`}> View </Link>
-                    <Link className="btn btn-primary mr-1" to={`/Edit/${this.EAN}`}> Edit </Link>
-                    <Link className="btn btn-danger" to={`/Delete/${this.EAN}`}> Delete </Link>
+                    <Link className="btn btn-info mr-1" to={`/products/${this.EAN}`}> View </Link>
+                    <Link className="btn btn-primary mr-1" to={`/products/Edit/${this.EAN}`}> Edit </Link>
+                    <Link className="btn btn-danger" to={`/products/Delete/${this.EAN}`}> Delete </Link>
                 </td>
             </tr>
         );
