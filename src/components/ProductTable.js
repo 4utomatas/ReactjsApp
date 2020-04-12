@@ -20,37 +20,37 @@ export default function ProductTable() {
         <tr>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Name </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Name </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img" />
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> EAN </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> EAN </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img"/>
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Type </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Type </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img"/>
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Weight </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Weight </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img"/>
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Color </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Color </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img"/>
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Quantity </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Quantity </div> <img src='/sort-solid.svg' className='sort-img' alt="sort-img"/>
             </div>
           </td>
           <td>
             <div className="custom-flex-sides"> 
-              <div> Price </div> <img src='/sort-solid.svg' className='sort-img'/>
+              <div> Price </div> <img src='/sort-solid.svg' className='sort-img'  alt="sort-img"/>
             </div>
           </td>
           <td className="sorter-false"> Active </td>

@@ -1,10 +1,9 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import Product from '../Product';
 
 export default function ProductDetails() {
     let { id } = useParams();
-    let obj = new Object();
+    let obj = {};
     try {
         let item = localStorage.getItem(id);
         obj = JSON.parse(item); 
@@ -13,9 +12,6 @@ export default function ProductDetails() {
         return(<div>Error: The product was not found, ID: {id}</div>);
     }
     if(obj !== null && obj.EAN !== null) {
-
-        let temp = {el: obj};
-        let product = new Product(temp);
         return (
             <div>
                 <p> Product details: </p>

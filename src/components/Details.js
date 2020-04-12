@@ -2,13 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import ProductDetails from './Details/ProductDetails';
 import History from './Details/History';
-import { Tabs, Tab, Panel } from '@bumaga/tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 export default function Details() {
     return (
         <div className=" text-left">
             <Tabs>
-                <div>
+                <TabList className="row list-inline"> 
                     <Tab>
                         <button className="btn btn-info mr-1">
                             Product Details
@@ -25,17 +25,17 @@ export default function Details() {
                         </button>
                     </Tab>
                     <Link className="btn btn-success" to={`/products/`}> Go back </Link>
-                </div>
+                </TabList>
                 <div className="mt-2">
-                    <Panel>
+                    <TabPanel>
                         <ProductDetails />
-                    </Panel>
-                    <Panel>
+                    </TabPanel>
+                    <TabPanel>
                         <History type="q"/>
-                    </Panel>
-                    <Panel>
+                    </TabPanel>
+                    <TabPanel>
                         <History type="p"/> 
-                    </Panel>
+                    </TabPanel>
                 </div>
             </Tabs>    
         </div>
