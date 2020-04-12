@@ -1,13 +1,12 @@
 import React from 'react';
-import Product from './Product';
-import {useParams, Link, Switch, Route, Redirect, useRouteMatch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ProductDetails from './Details/ProductDetails';
 import History from './Details/History';
 import { Tabs, Tab, Panel } from '@bumaga/tabs';
 
 export default function Details() {
     return (
-        <div className="container text-left">
+        <div className=" text-left">
             <Tabs>
                 <div>
                     <Tab>
@@ -27,16 +26,14 @@ export default function Details() {
                     </Tab>
                     <Link className="btn btn-success" to={`/`}> Go back </Link>
                 </div>
-                <div className="container m-2">
+                <div className="mt-2">
                     <Panel>
                         <ProductDetails />
                     </Panel>
                     <Panel>
-                        <p>Quantity history</p>
                         <History type="q"/>
                     </Panel>
                     <Panel>
-                        <p>Price history</p> 
                         <History type="p"/> 
                     </Panel>
                 </div>

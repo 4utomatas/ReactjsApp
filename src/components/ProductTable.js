@@ -1,10 +1,11 @@
 import React from 'react';
 import Product from './Product';
-
+import $ from 'jquery';
+import 'tablesorter';
 
 export default function ProductTable() {
   return (
-    <table className="table table-bordered table-striped product-table">
+    <table className="table table-bordered table-striped product-table" id="ProductTable">
       <thead>
         <tr>
           <td> Name </td>
@@ -24,6 +25,11 @@ export default function ProductTable() {
     </table>
   );
 }
+
+$(function() {
+  $("#ProductTable").tablesorter({
+  });
+});
 
 function ProductList() {
   let products = [];

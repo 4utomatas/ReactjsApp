@@ -1,54 +1,33 @@
 import React from 'react';
-import {useParams, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-export default function Edit() {
-    let { id } = useParams();
-    let obj = {};
-
-    try {
-        let item = localStorage.getItem(id);
-        obj = JSON.parse(item); 
-    }
-    catch(ex) {
-        return(<div>The product was not found</div>);
-    }
-
-    if(obj !== null && obj.EAN !== null) {
-        return (
-            <EditForm obj={obj} />
-        );      
-    }
-    else return <h2> The product was not found </h2>;      
+export default function Create() {
+    return <CreateForm />;      
 }
 
-class EditForm extends React.Component {
-    constructor(props) {
-      super(props);
+class CreateForm extends React.Component {
+    constructor() {
+        super();
       this.state = {
-        Name: props.obj.Name,
-        Type: props.obj.Type,
-        EAN: props.obj.EAN,
-        Weight: props.obj.Weight,
-        Color: props.obj.Color,
-        Quantity: props.obj.Quantity,
-        Price: props.obj.Price
+        Name: "",
+        Type: "",
+        EAN: "",
+        Weight: "",
+        Color: "",
+        Quantity: "",
+        Price: ""
       };
       // Save the EAN code if it is changed
-      this.EAN = props.obj.EAN;
-      this.Price = props.obj.Price;
-      this.Quantity = props.obj.Quantity;
-      this.handleInputChange = this.handleInputChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+    //   this.EAN = props.obj.EAN;
+    //   this.Price = props.obj.Price;
+    //   this.Quantity = props.obj.Quantity;
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
   
     CaptureChange(props) {
-        // if new quantity from the form is different
-        if(props.Quantity !== this.Quantity) {
-            SaveHistory({type: 'q', value: props.Quantity, EAN: this.EAN});
-        }
-        if(props.Price !== this.Price) {
-            SaveHistory({type: 'p', value: props.Price, EAN: this.EAN});
-        }
+        CreateHistory({type: 'q', value: props.Quantity, EAN: props.EAN});
+        CreateHistory({type: 'p', value: props.Price, EAN: props.EAN});
     }
 
     handleInputChange(event) {
@@ -75,7 +54,7 @@ class EditForm extends React.Component {
         let jsonified = JSON.stringify(updated);
         localStorage.setItem(this.state.EAN, jsonified);
 
-        this.CaptureChange({Quantity: updated.Quantity, Price: updated.Price});
+        this.CaptureChange({Quantity: updated.Quantity, Price: updated.Price, EAN: updated.EAN});
         alert('Your changes have been saved');
         
     }
@@ -93,7 +72,6 @@ class EditForm extends React.Component {
                         type="text"
                         value={this.state.EAN}
                         onChange={this.handleInputChange} 
-                        disabled
                         />
                 </div>
                 <div className="form-group">
@@ -171,7 +149,7 @@ class EditForm extends React.Component {
       );
     }
 }
-function SaveHistory(props) {
+function CreateHistory(props) {
     let obj = {};
     // q or p - quantity or price
     let type = props.type;
@@ -179,26 +157,13 @@ function SaveHistory(props) {
     let id = props.EAN;
     let newValue = props.value;
 
-    try {
-        let item = localStorage.getItem(`${type}${id}`);
-        obj = JSON.parse(item); 
-    }
-    catch(ex) {
-        alert(`Error: The product's history was not found, ID: ${id}`);
-    }
-
     let currentDate = new Date(Date.now()).toISOString();
     let splitDate = currentDate.split('T');    
-    
-    if(obj !== null && obj.EAN !== null) {
-        obj.History.push({date: splitDate[0], value: newValue });
-    }
-    else {
-        // Create a new history for the product
-        obj = {EAN: id, History: [{date: splitDate[0], value: newValue }]};
-    }
-    console.log(obj);
+
+    // Create a new history for the product
+    obj = {EAN: id, History: [{date: splitDate[0], value: newValue }]};
     let jsonified = JSON.stringify(obj);
     localStorage.setItem(`${type}${id}`, jsonified);
+
     return null;
 }

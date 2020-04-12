@@ -12,9 +12,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProductTable from "./components/ProductTable";
 
+import Create from "./components/Create";
+import Delete from "./components/Delete";
 import Details from "./components/Details";
 import Edit from "./components/Edit";
-import Delete from "./components/Delete";
 // Style
 import './bootstrap/css/bootstrap.css';
 
@@ -32,13 +33,25 @@ function App() {
             <h1>Edit product</h1>
             <Edit />
           </Route>
+          <Route path="/Create/">
+            <h1>Create new product:</h1> 
+            <Create/>
+          </Route>
           {/* Details */}
           <Route path="/:id">
             <h1>View details of a product</h1>
             <Details />
           </Route>
           <Route path="/">
-            <h1>Product list:</h1> 
+            <div className="d-flex flex-row justify-content-between align-items-center">
+              <div className="">
+                <h1>Product list:</h1>
+              </div>
+               
+              <div className="">
+                <Link className="btn btn-info mr-1 btn-new" to={`/Create/`}> New product </Link>
+              </div>
+            </div>
             <ProductTable/>
           </Route>
         </Switch>

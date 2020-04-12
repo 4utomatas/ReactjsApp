@@ -1,9 +1,6 @@
 import React from 'react';
 import './Product.css';
-import {
-    BrowserRouter as Router,
-    Link,
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default class Product extends React.Component{
     constructor(props) {
@@ -53,7 +50,7 @@ export default class Product extends React.Component{
     }
 
     isMarked() {
-        if(this.Quantity == 0) {
+        if(this.Quantity === 0) {
             console.log("it is marked");
             return "marked";
         }
