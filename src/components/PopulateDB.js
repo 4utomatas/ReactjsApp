@@ -4,7 +4,7 @@ export default function PopulateDB() {
     
     let arr = [
         // Products
-        { Name: "Fictional Phone 3000", EAN: "5165157459314", Type: "Phone", Weight: "100", Color: "Red", Active: "false", Quantity: 10, Price: 500.77 },
+        { Name: "Fictional Phone 3000", EAN: "5165157459314", Type: "Phone", Weight: "100", Color: "Red", Active: "false", Quantity: 10, Price: 500 },
         { Name: "Fictional Phone 3001", EAN: "8214110681686", Type: "Phone", Weight: "127", Color: "Black", Active: "false", Quantity: 10, Price: 500 },
         { Name: "Fictional Phone 3001", EAN: "5787798767753", Type: "Phone", Weight: "127", Color: "Silver", Active: "true", Quantity: 10, Price: 500},
         { Name: "Fictional Phone 3002", EAN: "3913406269384", Type: "Phone", Weight: "107", Color: "Gold", Active: "false", Quantity: 10, Price: 500},
@@ -17,8 +17,33 @@ export default function PopulateDB() {
             {date: "2020-02-01", value: 10},
             {date: "2020-02-02", value: 5},
             {date: "2020-02-05", value: 7},
-            {date: "2020-02-10", value: 20}
-        ]}
+            {date: "2020-02-10", value: 10}
+        ]},
+        {
+            EAN: "8214110681686", History: [
+                {date: "2020-02-01", value: 10}
+            ]
+        },
+        {
+            EAN: "5787798767753", History: [
+                {date: "2020-02-01", value: 10}
+            ]
+        },
+        {
+            EAN: "3913406269384", History: [
+                {date: "2020-02-01", value: 10}
+            ]
+        },
+        {
+            EAN: "6976202303917", History: [
+                {date: "2020-02-01", value: 10}
+            ]
+        },
+        {
+            EAN: "7483869738297", History: [
+                {date: "2020-02-01", value: 10}
+            ]
+        }
     ];
     let phistory = [
         // Price History
@@ -26,8 +51,33 @@ export default function PopulateDB() {
             {date: "2020-02-01", value: 1000.05},
             {date: "2020-02-02", value: 700.70},
             {date: "2020-02-05", value: 777.77},
-            {date: "2020-02-10", value: 2000.10}
-        ]}
+            {date: "2020-02-10", value: 500}
+        ]},
+        {
+            EAN: "8214110681686", History: [
+                {date: "2020-02-01", value: 500}
+            ]
+        },
+        {
+            EAN: "5787798767753", History: [
+                {date: "2020-02-01", value: 500}
+            ]
+        },
+        {
+            EAN: "3913406269384", History: [
+                {date: "2020-02-01", value: 500}
+            ]
+        },
+        {
+            EAN: "6976202303917", History: [
+                {date: "2020-02-01", value: 500}
+            ]
+        },
+        {
+            EAN: "7483869738297", History: [
+                {date: "2020-02-01", value: 500}
+            ]
+        }
     ];
     for( let el of arr) {
         // console.log(el);
